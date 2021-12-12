@@ -1,4 +1,15 @@
-const g = require('./general.js')
+const g = require('./warmup.js')
+
+console.log(g.timeConversion('07:05:45PM'))
+console.log(g.timeConversion('12:00:00PM'))
+console.log(g.timeConversion('12:00:00AM'))
+
+console.log(g.birthdayCakeCandles([3,2,1,3]))
+
+g.staircase(6)
+
+g.plusMinus([-4, 3, -9, 0, 4, 1])
+g.plusMinus([1, 2, 3, -1, -2, -3, 0, 0])
 
 const aVeryBigSum = g.aVeryBigSum([1, 2, 3, 5555555])
 console.log('aVeryBigSum', aVeryBigSum, aVeryBigSum === 5555561)

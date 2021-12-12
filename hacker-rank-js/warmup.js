@@ -95,3 +95,41 @@ exports.changeMoney = (cash) => {
         ten: ten
     }
 }
+
+// #array
+exports.plusMinus = (arr) => {
+    console.log(arr.filter(f => f > 0).length / arr.length)
+    console.log(arr.filter(f => f < 0).length / arr.length)
+    console.log(arr.filter(f => f === 0).length / arr.length)
+}
+
+// #string repeat
+exports.staircase = (n) => {
+    for (let i = 1; i < n; i++) {
+        console.log(' '.repeat(n - i - 1), '#'.repeat(i))
+    }
+    console.log('#'.repeat(n))
+}
+
+// #array #sort #filter
+exports.birthdayCakeCandles = (candles) => {
+    candles.sort((a, b) => a - b)
+    return candles.filter(f => f === candles[candles.length - 1]).length
+}
+
+// #time #conversion
+exports.timeConversion = (s) => {
+    let timeStr
+    if (s.indexOf('PM') >= 0) {
+        timeStr = s.replace('PM', '').split(':')
+        if (parseInt(timeStr[0]) !== 12){
+            timeStr[0] = (parseInt(timeStr[0]) + 12).toString()
+        }
+    } else {
+        timeStr = s.replace('AM', '').split(':')
+        if (parseInt(timeStr[0]) === 12){
+            timeStr[0] = '00'
+        }
+    }
+    return timeStr.join(':')
+}

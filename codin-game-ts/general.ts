@@ -1,6 +1,6 @@
 class General {
 
-    // #loop
+    // #loop #string repeat
     public static fibonacci() {
         const N: number = 7;
         const ch: string = 'F';
