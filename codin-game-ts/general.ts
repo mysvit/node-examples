@@ -175,8 +175,134 @@ class General {
                 }
             }
         }
+    }
+
+    // loop
+    public static greenValleys(H: number, N: number, valley: number[][]) {
+        const result = []
+        const levels = []
+        let levelIndex = 0
+        createLevels()
+        mergeLevels()
+        countValleys()
+
+        console.error(H)
+        console.error(N)
+        console.error(valley)
+        console.error(levels)
+
+        if (result.length === 0) {
+            return 0
+        } else {
+            result.sort((a, b) => b[1] - a[1] || a[0] - b[0])
+            console.error(result)
+            return result[0][0]
+        }
+
+        function createLevels() {
+            valley.forEach((row, i) =>
+                row.forEach((column, j) => {
+                        // find if level exist
+                        if (valley[i][j] <= H) {
+                            levelIndex = levels.findIndex(item => isPartOfValley(item, i, j, N))
+                            if (levelIndex < 0) {
+                                levels.push(newArray(N))
+                                levelIndex = levels.length - 1
+                                levels[levelIndex][i][j] = valley[i][j]
+                            } else {
+                                levels[levelIndex][i][j] = valley[i][j]
+                            }
+                        }
+                    }
+                ))
+        }
+
+
+        function mergeLevels() {
+            let isMergedGlobal = true
+            while (isMergedGlobal) {
+                isMergedGlobal = false
+                let mergeLevel = 0
+                let isMerged = false
+                if (levels.length <= 1) {
+                    return
+                }
+                while (mergeLevel < levels.length - 1) {
+                    let i = 0
+                    while (!isMerged && i < N) {
+                        let j = 0
+                        while (!isMerged && j < N) {
+                            if (levels[mergeLevel][i][j] != undefined) {
+                                levelIndex = levels.slice(mergeLevel + 1).findIndex(item => isPartOfValley(item, i, j, N))
+                                // merge levels below
+                                if (levelIndex >= 0) {
+                                    isMerged = true
+                                    isMergedGlobal = true
+                                    simpleMerge(mergeLevel, levelIndex + mergeLevel + 1)
+                                    levels.splice(levelIndex + mergeLevel + 1, 1)
+                                }
+                            }
+                            j++
+                        }
+                        i++
+                    }
+                    isMerged ? isMerged = false : mergeLevel++
+                }
+            }
+        }
+
+
+        function simpleMerge(mergeLevel, levelIndex) {
+            // simple merge level
+            for (let i = 0; i < N; i++) {
+                for (let j = 0; j < N; j++) {
+                    if (levels[levelIndex][i][j] != undefined) {
+                        levels[mergeLevel][i][j] = levels[levelIndex][i][j]
+                    }
+                }
+            }
+        }
+
+        function countValleys() {
+            levels.forEach((lev, l) => {
+                    result[l] = [H - 1, 0]
+                    lev.forEach((row, i) =>
+                        row.forEach((column, j) => {
+                                result[l][1]++
+                                result[l][0] = minVal(result[l][0], lev[i][j])
+                            }
+                        )
+                    )
+                }
+            )
+        }
+
+        function isPartOfValley(item, i, j, length) {
+            if (item[i][j] >= 0) {
+                return true
+            } else if (i - 1 >= 0 && item[i - 1][j] >= 0) {
+                return true
+            } else if (i + 1 < length && item[i + 1][j] >= 0) {
+                return true
+            } else if (j - 1 >= 0 && item[i][j - 1] >= 0) {
+                return true
+            } else if (j + 1 < length && item[i][j + 1] >= 0) {
+                return true
+            }
+            return false
+        }
+
+        function minVal(min, b) {
+            return b > 0 && min < b ? min : b
+        }
+
+        function newArray(length) {
+            return Array.from(Array(length), () => new Array(length))
+        }
 
     }
+
 }
+
 
 (module).exports = General

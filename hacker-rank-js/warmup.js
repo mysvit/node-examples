@@ -122,14 +122,37 @@ exports.timeConversion = (s) => {
     let timeStr
     if (s.indexOf('PM') >= 0) {
         timeStr = s.replace('PM', '').split(':')
-        if (parseInt(timeStr[0]) !== 12){
+        if (parseInt(timeStr[0]) !== 12) {
             timeStr[0] = (parseInt(timeStr[0]) + 12).toString()
         }
     } else {
         timeStr = s.replace('AM', '').split(':')
-        if (parseInt(timeStr[0]) === 12){
+        if (parseInt(timeStr[0]) === 12) {
             timeStr[0] = '00'
         }
     }
     return timeStr.join(':')
 }
+
+exports.factorial = (n) => {
+    let f = 1
+    for (let i = 1; i <= n; i++) {
+        f = f * i
+    }
+    return f
+}
+
+exports.PI = (r) => {
+    r = parseFloat(r)
+    // Print the area of the circle:
+    // Print the perimeter of the circle:
+    return [Math.PI * r * r, 2 * Math.PI * r]
+
+}
+
+exports.floatToLog = () => {
+    const d = 4.0
+    return (d).toFixed(1)
+}
+
+
