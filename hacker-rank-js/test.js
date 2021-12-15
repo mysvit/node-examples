@@ -1,26 +1,3 @@
-// write a function that will  return true or false
-// depending on if input string read the thing when
-// read from left to right
-// or right to left
-
-// example
-// Madam
-
-exports.rightLeftRight = (str) => {
-    let i = 0;
-    let j = str.length - 1;
-    let isEqual = true
-    while (i < j) {
-        if (str[i] !== str[j]) {
-            isEqual = false
-            break
-        }
-        i++
-        j--
-    }
-    return isEqual
-}
-
 // given two integer arrays generate intersection array with includes all numbers
 // presented in both array including duplicates if any
 

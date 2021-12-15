@@ -4,21 +4,7 @@ const t = require('./test')
 const cl = require('./clash')
 
 
-console.log(cl.pow(2, 200), cl.pow(2, 200)===1.6069380442589903e+60)
-console.log(cl.pow(2, 2000), cl.pow(2, 2000)===Infinity)
-
-// console.log(cl.replaceAllNoAlphabet('Hello, World!'), cl.replaceAllNoAlphabet('Hello, World!') === 'Hello World')
-
-// console.log(cl.phoneFormat('1234567890'))
-
-// console.log('madam', t.rightLeftRight('madam'))
-// console.log('maddam', t.rightLeftRight('maddam'))
-// console.log('maddam1', t.rightLeftRight('maddam1'))
 // t.interArray()
-
-
-// const arr = impl.countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6])
-// console.log(arr, arr[0] === 1, arr[1] === 1)
 
 
 // console.log('floatToLog', warm.floatToLog() === '4.0')
