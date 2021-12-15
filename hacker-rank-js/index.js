@@ -3,6 +3,10 @@ const impl = require('./implementation')
 const t = require('./test')
 const cl = require('./clash')
 
+
+console.log(cl.pow(2, 200), cl.pow(2, 200)===1.6069380442589903e+60)
+console.log(cl.pow(2, 2000), cl.pow(2, 2000)===Infinity)
+
 // console.log(cl.replaceAllNoAlphabet('Hello, World!'), cl.replaceAllNoAlphabet('Hello, World!') === 'Hello World')
 
 // console.log(cl.phoneFormat('1234567890'))

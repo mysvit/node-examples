@@ -6,3 +6,11 @@ exports.phoneFormat = (phone) => {
 exports.replaceAllNoAlphabet = (str) => {
     return str.replace(/[^a-zA-Z\s]/g, '')
 }
+// #string #regex
+exports.countDigit = (str) => {
+    str.match(/[1]+/g).length
+}
+// #MAX_VALUE #exponentiation #pow
+exports.pow = (x, y) => {
+    return x ** y
+}
