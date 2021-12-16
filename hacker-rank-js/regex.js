@@ -1,3 +1,6 @@
+// #string #regex /g
+// console.log('--0---0----0'.replace(/[0]/g,'-'))
+
 // #string #regex
 function reverseString(str) {
     let res = ''
