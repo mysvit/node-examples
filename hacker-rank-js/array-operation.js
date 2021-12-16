@@ -39,6 +39,7 @@ function isEqualRightLeft(str) {
 // console.log('maddam', isEqualRightLeft('maddam'))
 // console.log('maddam1', isEqualRightLeft('maddam1'))
 
+//#array #math #max
 function getSecondLargest(nums) {
     let max = 0
     let min = 0

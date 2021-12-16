@@ -52,50 +52,6 @@ exports.iceCreamParlor = (m, arr) => {
     return [first + 1, second + 1]
 }
 
-exports.changeMoney = (cash) => {
-    let two = 0;
-    let five = 0;
-    let ten = Math.floor(cash / 10);
-    if (cash === 1) {
-        return null
-    }
-    // ten
-    if (cash % 10 === 0 || (cash % 10 > 0 && (cash % 10 % 5 === 0 || cash % 10 % 2 === 0))) {
-        cash = cash - ten * 10
-    } else {
-        ten = ten - 1
-        if ((cash % ten * 10) % 5 === 0 || (cash % ten * 10) % 2 === 0) {
-            cash = cash - ten * 10
-        } else {
-            ten = 0
-        }
-    }
-    // five
-    if (cash !== 0) {
-        five = Math.floor(cash / 5);
-        if (cash % 5 === 0 || (cash % 5 > 0 && cash % 5 % 2 === 0)) {
-            cash = cash - five * 5
-            two = Math.floor(cash / 2)
-        } else {
-            five = five - 1
-        }
-    }
-    // two
-    if (cash !== 0) {
-        if ((cash - five * 5) % 2 === 0) {
-            cash = cash - five * 5
-        } else {
-            five = 0
-        }
-        two = Math.floor(cash / 2)
-    }
-    return {
-        two: two,
-        five: five,
-        ten: ten
-    }
-}
-
 // #array
 exports.plusMinus = (arr) => {
     console.log(arr.filter(f => f > 0).length / arr.length)
