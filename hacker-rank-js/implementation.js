@@ -19,7 +19,7 @@ changeMoney = (cash) => {
         two = two - 1
     }
 
-    // if not possible return 0, 0, 0
+    // not possible exchange (1,3) - return 0, 0, 0
     return {
         two: two,
         five: five,
@@ -69,8 +69,8 @@ c = changeMoney(20)
 console.log('20:', c, c.two === 0, c.five === 0, c.ten === 2)
 
 
-// #object
-interArray = () => {
+// #array #object #fill
+intersectionArray = () => {
     const a1 = [1, 2, 3, 4, 5, 1, 2, 3]
     const a2 = [1, 1, 2, 4, 4, 4, 5, 5, 5]
     const result = [1, 1, 2, 4, 5]
@@ -88,21 +88,21 @@ interArray = () => {
             }
         }
     }
+
+    objFromArray = (arr) => {
+        const result = {}
+        for (let i = 0; i < arr.length; i++) {
+            if (result[arr[i]] === undefined) {
+                result[arr[i]] = 1
+            } else {
+                result[arr[i]] = result[arr[i]] + 1
+            }
+        }
+        return result
+    }
     return res
 }
-
-objFromArray = (arr) => {
-    const result = {}
-    for (let i = 0; i < arr.length; i++) {
-        if (result[arr[i]] === undefined) {
-            result[arr[i]] = 1
-        } else {
-            result[arr[i]] = result[arr[i]] + 1
-        }
-    }
-    return result
-}
-// console.log(interArray())
+// console.log(intersectionArray())
 
 
 // #class #method #getter
@@ -119,21 +119,8 @@ class Polygon {
         return this.arr.reduce((a, b) => a + b)
     }
 }
-
 // const rectangle = new Polygon([10, 20, 10, 20]);
 // console.log(rectangle.perimeter(), rectangle.perimeter() === 60)
-
-// #loop #array #filter
-countApplesAndOranges = (s, t, a, b, apples, oranges) => {
-    apples.forEach((item, i) => apples[i] += a)
-    oranges.forEach((item, i) => oranges[i] += b)
-    const arr = []
-    arr.push(apples.filter(f => f >= s && f <= t).length)
-    arr.push(oranges.filter(f => f >= s && f <= t).length)
-    return arr
-}
-// const arr = countApplesAndOranges(7, 11, 5, 15, [-2, 2, 1], [5, -6])
-// console.log(arr, arr[0] === 1, arr[1] === 1)
 
 
 // #throw
@@ -146,9 +133,29 @@ function isPositive(a) {
     }
     return 'YES'
 }
-
 // try {
 //     console.log(isPositive(0));
 // } catch (e) {
 //     console.log(e.message);
 // }
+
+
+// #time #conversion
+timeConversion = (s) => {
+    let timeStr
+    if (s.indexOf('PM') >= 0) {
+        timeStr = s.replace('PM', '').split(':')
+        if (parseInt(timeStr[0]) !== 12) {
+            timeStr[0] = (parseInt(timeStr[0]) + 12).toString()
+        }
+    } else {
+        timeStr = s.replace('AM', '').split(':')
+        if (parseInt(timeStr[0]) === 12) {
+            timeStr[0] = '00'
+        }
+    }
+    return timeStr.join(':')
+}
+// console.log(timeConversion('07:05:45PM'))
+// console.log(timeConversion('12:00:00PM'))
+// console.log(timeConversion('12:00:00AM'))

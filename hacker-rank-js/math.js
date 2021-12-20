@@ -10,6 +10,7 @@ function divisionPossibility(n) {
         console.log(res.trim())
     }
 }
+
 // divisionPossibility(6)
 
 
@@ -90,6 +91,8 @@ function arrayMin(arr) {
     });
 }
 
+// console.log(arrayMin([,1,5,34,677,34,2,12]))
+
 // #math #max #if #loop
 function arrayMax(arr) {
     return arr.reduce(function (p, v) {
@@ -97,7 +100,16 @@ function arrayMax(arr) {
     });
 }
 
-// console.log(arrayMin([,1,5,34,677,34,2,12]))
+// console.log(arrayMax([,1,5,34,677,34,2,12]))
+
+// #array #sum
+function arraySum(arr) {
+    return arr.reduce((p, v) => {
+        return p + v
+    }, 0)
+}
+
+// console.log(arraySum([,1,5,34,677,34,2,12]))
 
 // #math #mod #if #loop
 function sumOfEventOdd(n) {
@@ -114,7 +126,7 @@ function sumOfEventOdd(n) {
     return {odd: odd, even: even}
 }
 
-const s = sumOfEventOdd(16)
+// const s = sumOfEventOdd(16)
 // console.log(s, s.odd === 64, s.even === 72 )
 
 //#math #mod #if
@@ -160,3 +172,29 @@ function gradingStudents(grades) {
 }
 
 // console.log(gradingStudents([73, 67, 38, 33]))
+
+floatToLog = () => {
+    const d = 4.0
+    return (d).toFixed(1)
+}
+// console.log('floatToLog', floatToLog() === '4.0')
+
+
+// #float
+PI = (r) => {
+    r = parseFloat(r)
+    // Print the area of the circle:
+    // Print the perimeter of the circle:
+    return [Math.PI * r * r, 2 * Math.PI * r]
+}
+//console.log('PI', PI('2.6'), PI('2.6')[0] === 21.237166338267002, PI('2.6')[1] === 16.336281798666924)
+
+// #factorial
+factorial = (n) => {
+    let f = 1
+    for (let i = 1; i <= n; i++) {
+        f = f * i
+    }
+    return f
+}
+// console.log('factorial', factorial(4), factorial(4) === 24)

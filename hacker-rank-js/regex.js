@@ -41,3 +41,35 @@ countDigit = (str) => {
 }
 // const r = countDigit('1110000')
 // console.log('Count digit:', r, r === 3)
+
+
+
+
+
+// #string #compare
+function isEqualRightLeft(str) {
+    let i = 0;
+    let j = str.length - 1;
+    let isEqual = true
+    while (i < j) {
+        if (str[i] !== str[j]) {
+            isEqual = false
+            break
+        }
+        i++
+        j--
+    }
+    return isEqual
+}
+// console.log('madam', isEqualRightLeft('madam'))
+// console.log('maddam', isEqualRightLeft('maddam'))
+// console.log('maddam1', isEqualRightLeft('maddam1'))
+
+// #string repeat
+staircase = (n) => {
+    for (let i = 1; i < n; i++) {
+        console.log(' '.repeat(n - i - 1), '#'.repeat(i))
+    }
+    console.log('#'.repeat(n))
+}
+// staircase(6)
