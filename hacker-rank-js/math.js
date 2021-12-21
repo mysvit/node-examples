@@ -1,3 +1,20 @@
+function getMaxLessThanK(n, k) {
+    let maxAnd = 0
+    for (let i = 1; i < n; i++) {
+        for (let j = i + 1; j <= n; j++) {
+            const b = i & j
+            if (maxAnd < b && b < k) {
+                maxAnd = b
+            }
+        }
+    }
+    return maxAnd
+}
+
+console.log(getMaxLessThanK(8, 5))
+// console.log(4 & 5)
+
+
 // #math #div #loop
 function divisionPossibility(n) {
     for (let i = 1; i <= n; i++) {
@@ -40,13 +57,12 @@ function meanMediaMode(input) {
     // mode
     let mode = []
     input.forEach(item => {
-            if (mode[item] === undefined) {
-                mode[item] = 1
-            } else {
-                mode[item] = mode[item] + 1
-            }
+        if (mode[item] === undefined) {
+            mode[item] = 1
+        } else {
+            mode[item] = mode[item] + 1
         }
-    )
+    })
     let minNum = mode.length
     let maxCnt = 0
     mode.forEach((v, i) => {
@@ -59,9 +75,7 @@ function meanMediaMode(input) {
         }
     })
     return {
-        mean: mean,
-        median: median,
-        mode: minNum
+        mean: mean, median: median, mode: minNum
     }
 }
 

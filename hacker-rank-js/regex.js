@@ -1,3 +1,21 @@
+// #regex #first 2,3 and NOT next 2,3
+// Mr. Sam - match
+// Mrs.Dr. - not mach
+// console.log('Mr. Sam'.match(/(^\S{2,3}[.])(?!\S{2,3}[.])/))
+// console.log('Mr.De. Sam'.match(/(^\S{2,3}[.])(?!\S{2,3}[.])/))
+
+
+// #regex #compare #first #last
+// \1  matches the same text as most recently matched by the 1st capturing group
+// ^ begin,  $ end,  .* any between
+function vowelsStartEnd(s) {
+    return s.match(/(^[aeiou])(.*)\1$/gi)
+}
+// console.log('aGGGGGa', vowelsStartEnd('aGGGGGa'), !!vowelsStartEnd('aGGGGGa'))
+// console.log('aGGGGGb', vowelsStartEnd('aGGGGGb'), !!vowelsStartEnd('aGGGGGb'))
+// console.log('aGGGGGi', vowelsStartEnd('aGGGGGi'))
+
+
 // #string #regex /g
 // console.log('--0---0----0'.replace(/[0]/g,'-'))
 
@@ -9,6 +27,7 @@ function reverseString(str) {
     })
     return res
 }
+
 // console.log(reverseString('aaaBBB123!@#'),'AAAbbb123!@#')
 
 function vowelsAndConsonants(s) {
@@ -19,6 +38,7 @@ function vowelsAndConsonants(s) {
         console.log(c)
     })
 }
+
 // vowelsAndConsonants('javascriptloops')
 
 // #string #regex
@@ -43,9 +63,6 @@ countDigit = (str) => {
 // console.log('Count digit:', r, r === 3)
 
 
-
-
-
 // #string #compare
 function isEqualRightLeft(str) {
     let i = 0;
@@ -61,6 +78,7 @@ function isEqualRightLeft(str) {
     }
     return isEqual
 }
+
 // console.log('madam', isEqualRightLeft('madam'))
 // console.log('maddam', isEqualRightLeft('maddam'))
 // console.log('maddam1', isEqualRightLeft('maddam1'))
