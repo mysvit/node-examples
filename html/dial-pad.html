@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        button {
+            width: 100%;
+            height: 48px;
+            font-size: 24px;
+        }
+
+        .btns {
+            width: 75%;
+            display: grid;
+            grid-template-columns: repeat(3, 30%);
+            grid-template-rows: repeat(3, 48px);
+            column-gap: 5%;
+        }
+    </style>
+</head>
+<body>
+<script>
+    var btns = [{name: 'btn1', id: 1}, {name: 'btn2', id: 2}, {name: 'btn3', id: 3},
+        {name: 'btn6', id: 6}, {name: 'btn9', id: 9}, {name: 'btn8', id: 8},
+        {name: 'btn7', id: 7}, {name: 'btn4', id: 4}]
+    let btnsH = document.createElement("div");
+    btnsH.id = 'btns'
+    btnsH.className = 'btns'
+    for (let i = 1; i < 10; i++) {
+        let btn = document.createElement("button");
+        btn.innerHTML = i.toString();
+        btn.id = 'btn' + i.toString();
+        if (i === 5) {
+            btn.onclick = shiftBtns;
+        }
+        btnsH.appendChild(btn);
+        document.body.appendChild(btnsH)
+    }
+
+    function shiftBtns() {
+        let shift = btns[0].id;
+        let next;
+        for (let i = 0; i < 7; i++) {
+            next = btns[i + 1].id
+            btns[i + 1].id = shift
+            shift = next
+            setBtnLabel(i + 1)
+        }
+        btns[0].id = shift
+        setBtnLabel(0)
+    }
+
+    function setBtnLabel(currentIndex) {
+        const btn = document.getElementById(btns[currentIndex].name)
+        if (btn) {
+            btn.innerHTML = btns[currentIndex].id.toString()
+        }
+    }</script>
+</body>
+</html>

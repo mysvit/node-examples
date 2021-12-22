@@ -1,3 +1,7 @@
+// #regex #digital #all
+// console.log('102, 1948948 and 1.3 and 4.5'.match(/\d+/g))
+
+
 // #regex #first 2,3 and NOT next 2,3
 // Mr. Sam - match
 // Mrs.Dr. - not mach
@@ -16,8 +20,9 @@ function vowelsStartEnd(s) {
 // console.log('aGGGGGi', vowelsStartEnd('aGGGGGi'))
 
 
-// #string #regex /g
+// #regex #one char /g
 // console.log('--0---0----0'.replace(/[0]/g,'-'))
+
 
 // #string #regex
 function reverseString(str) {
@@ -27,9 +32,10 @@ function reverseString(str) {
     })
     return res
 }
-
 // console.log(reverseString('aaaBBB123!@#'),'AAAbbb123!@#')
 
+
+// #regex #vowel #consonant
 function vowelsAndConsonants(s) {
     const vowel = s.match(/[aeiou]/g).forEach(v => {
         console.log(v)
@@ -38,8 +44,8 @@ function vowelsAndConsonants(s) {
         console.log(c)
     })
 }
-
 // vowelsAndConsonants('javascriptloops')
+
 
 // #string #regex
 phoneFormat = (phone) => {
@@ -48,12 +54,14 @@ phoneFormat = (phone) => {
 // const r = phoneFormat('1234567890')
 // console.log(r, r === '(123) 456-7890')
 
+
 // #string #regex
 replaceAllNoAlphabet = (str) => {
     return str.replace(/[^a-zA-Z\s]/g, '')
 }
 // const r = replaceAllNoAlphabet('Hello, World!')
 // console.log(r, r === 'Hello World')
+
 
 // #string #regex
 countDigit = (str) => {
@@ -78,10 +86,10 @@ function isEqualRightLeft(str) {
     }
     return isEqual
 }
-
 // console.log('madam', isEqualRightLeft('madam'))
 // console.log('maddam', isEqualRightLeft('maddam'))
 // console.log('maddam1', isEqualRightLeft('maddam1'))
+
 
 // #string repeat
 staircase = (n) => {
