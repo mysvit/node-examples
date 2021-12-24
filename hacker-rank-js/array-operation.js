@@ -1,3 +1,92 @@
+console.log('Array operations')
+
+// #array #sum
+function sumOfHourGlasses(arr) {
+    let max = hourglassesSum(0, 0, arr)
+    for (let i = 0; i < arr.length - 2; i++) {
+        for (let j = 0; j < arr.length - 2; j++) {
+            const sum = hourglassesSum(arr)
+            max = (max < sum) ? sum : max
+        }
+    }
+    return max
+}
+
+function hourglassesSum(i, j, arr) {
+    return arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2]
+}
+// const arr = [
+//     [1, 1, 1, 0, 0, 0],
+//     [0, 1, 0, 0, 0, 0],
+//     [1, 1, 1, 0, 0, 0],
+//     [0, 0, 2, 4, 4, 0],
+//     [0, 0, 0, 2, 0, 0],
+//     [0, 0, 1, 2, 4, 0]
+// ]
+// console.log(sumOfHourGlasses(arr))
+
+
+// #array #compare
+function compareTwoArrays(arr1, arr2) {
+    let res = []
+    for (let i = 0; i < arr1.length; i++) {
+        const index = arr2.findIndex(f => f === arr1[i])
+        if (index < 0) {
+            res.push(arr1[i])
+        } else {
+            arr2.splice(index, 1)
+        }
+    }
+    return res.concat(arr2)
+}
+const arr1 = [1, 2, 3, 4, 5]
+const arr2 = [3, 2, 1, 6, 7]
+const result = compareTwoArrays(arr1, arr2)
+console.log('compareTwoArrays', result, 'expected [4, 5, 6, 7]')
+
+//#array #min #second #not exist
+function getSmallestNotExist(A) {
+    // inverse sort
+    const srtArr = A.sort().filter(f => f > 0)
+    srtArr.splice(0, 0, 0)
+    for (i = 0; i < srtArr.length - 1; i++) {
+        if (srtArr[i] + 1 !== srtArr[i + 1] && srtArr[i] !== srtArr[i + 1]) {
+            return srtArr[i] + 1
+        }
+    }
+    return srtArr[srtArr.length - 1] + 1
+}
+// console.log(getSmallestNotExist([-2, -3, 1, 2, 4, 4, 5]))
+
+// #map #hash
+function hashMapPhoneBook(input) {
+    input = input.split('\n')
+    let len = parseInt(input[0])
+    let phoneBook = new Map()
+    for (let i = 1; i <= len; i++) {
+        const r = input[i].split(' ')
+        phoneBook.set(r[0], r[1])
+    }
+    input.splice(0, len + 1)
+    for (let i = 0; i < input.length; i++) {
+        const rec = phoneBook.get(input[i])
+        if (rec) {
+            console.log(input[i] + '=' + rec)
+        } else {
+            console.log('Not found')
+        }
+    }
+}
+// console.log(hashMapPhoneBook(
+//     '3\n' +
+//     'sam 99912222\n' +
+//     'tom 11122222\n' +
+//     'harry 12299933\n' +
+//     'sam\n' +
+//     'edward\n' +
+//     'harry'))
+
+
 // #array #find
 exports.iceCreamParlor = (m, arr) => {
     let first = 0
@@ -52,6 +141,7 @@ function reverseString(str) {
     }
     return str.join('')
 }
+
 // console.log(reverseString('abcdefg'))
 // console.log(reverseString(Number(1234)))
 

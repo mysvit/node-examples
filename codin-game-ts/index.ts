@@ -1,4 +1,7 @@
-const g = require('./general')
+
+
+
+// const g = require('./general')
 
 // g.fibonacci()
 //

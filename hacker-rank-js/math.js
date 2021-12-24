@@ -1,3 +1,12 @@
+// #binary
+function binaryMaxOneLengthGroups(n) {
+    return n.toString(2).split('0').reduce((p, v) => {
+        return p.length < v.length ? v : p
+    })
+}
+// console.log(binaryMaxOneLengthGroups(5).length)
+// console.log(binaryMaxOneLengthGroups(13).length)
+
 function getMaxLessThanK(n, k) {
     let maxAnd = 0
     for (let i = 1; i < n; i++) {
@@ -11,7 +20,7 @@ function getMaxLessThanK(n, k) {
     return maxAnd
 }
 
-console.log(getMaxLessThanK(8, 5))
+// console.log(getMaxLessThanK(8, 5))
 // console.log(4 & 5)
 
 
@@ -31,7 +40,7 @@ function divisionPossibility(n) {
 // divisionPossibility(6)
 
 
-// #math #int to float #float
+// #math #int to float #float #round
 function weightedMean(X, W) {
     let ss = 0.0
     let sw = 0.0
@@ -95,7 +104,7 @@ function closestToZero(numbers) {
     })
     return min
 }
-
+// console.log(closestToZero([-2, 0,3,5,6]))
 // console.log(closestToZero([null, 1]))
 
 // #math #min #if #loop
@@ -125,7 +134,7 @@ function arraySum(arr) {
 
 // console.log(arraySum([,1,5,34,677,34,2,12]))
 
-// #math #mod #if #loop
+// #math #mod #if #loop #even #odd
 function sumOfEventOdd(n) {
     let odd = 0
     let even = 0
@@ -187,6 +196,7 @@ function gradingStudents(grades) {
 
 // console.log(gradingStudents([73, 67, 38, 33]))
 
+// #round
 floatToLog = () => {
     const d = 4.0
     return (d).toFixed(1)
@@ -212,3 +222,13 @@ factorial = (n) => {
     return f
 }
 // console.log('factorial', factorial(4), factorial(4) === 24)
+
+// #factorial recursive
+function factorialR(n) {
+    if (n === 1){
+        return 1
+    } else {
+        return n * factorialR(n-1)
+    }
+}
+// console.log('factorialR', factorialR(4), factorialR(4) === 24)
