@@ -39,10 +39,10 @@ function compareTwoArrays(arr1, arr2) {
     }
     return res.concat(arr2)
 }
-const arr1 = [1, 2, 3, 4, 5]
-const arr2 = [3, 2, 1, 6, 7]
-const result = compareTwoArrays(arr1, arr2)
-console.log('compareTwoArrays', result, 'expected [4, 5, 6, 7]')
+// const arr1 = [1, 2, 3, 4, 5]
+// const arr2 = [3, 2, 1, 6, 7]
+// const result = compareTwoArrays(arr1, arr2)
+// console.log('compareTwoArrays', result, 'expected [4, 5, 6, 7]')
 
 //#array #min #second #not exist
 function getSmallestNotExist(A) {

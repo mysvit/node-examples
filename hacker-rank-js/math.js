@@ -4,6 +4,7 @@ function binaryMaxOneLengthGroups(n) {
         return p.length < v.length ? v : p
     })
 }
+
 // console.log(binaryMaxOneLengthGroups(5).length)
 // console.log(binaryMaxOneLengthGroups(13).length)
 
@@ -104,8 +105,25 @@ function closestToZero(numbers) {
     })
     return min
 }
+
 // console.log(closestToZero([-2, 0,3,5,6]))
 // console.log(closestToZero([null, 1]))
+
+
+//#array #math #min #max
+function arrayMinMax(arr) {
+    let max = arr[0]
+    let min = arr[0]
+    arr.forEach(v => {
+        max = max < v ? v : max
+        min= min > v ? v : min
+    })
+    return {min, max}
+}
+
+// console.log(arrayMinMax([9, 3, 5, 1, 2]))
+// console.log(arrayMinMax([1, 2, 5]))
+
 
 // #math #min #if #loop
 function arrayMin(arr) {
@@ -225,10 +243,11 @@ factorial = (n) => {
 
 // #factorial recursive
 function factorialR(n) {
-    if (n === 1){
+    if (n === 1) {
         return 1
     } else {
-        return n * factorialR(n-1)
+        return n * factorialR(n - 1)
     }
 }
+
 // console.log('factorialR', factorialR(4), factorialR(4) === 24)

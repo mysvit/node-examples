@@ -1,9 +1,5 @@
 
-
-
-// const g = require('./general')
-
-// g.fibonacci()
+// General.fibonacci()
 //
 // g.caesarCipher()
 //
@@ -64,4 +60,3 @@
 // )
 //
 // console.log('greenValleys', res3, res3 === 420)
-

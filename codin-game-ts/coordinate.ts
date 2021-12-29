@@ -1,12 +1,10 @@
-interface Number {
-    inRange(begin: number, end: number): boolean;
+import "./prototypes"
+
+export function inRange(num: number, begin: number, end: number) {
+    return begin <= num && num <= end
 }
 
-Number.prototype.inRange = function (begin: number, end: number) {
-    return begin <= this && this <= end
-}
-
-class Point {
+export class Point {
     constructor(public x: number, public y: number) {
     }
 
@@ -14,19 +12,28 @@ class Point {
     }
 
     inRange(p: Point, range: number) {
-        return distXY(p, this).inRange(0, range)
+        return inRange(this.distXY(p), 0, range)
     }
 
     distXY(destination) {
-        return distXY(this, destination)
+        return Math.abs(distXY(this, destination))
     }
+
+    pointXYByDistAngle(dist: number, ang: number) {
+        return pointXYByDistAngle(this, dist, ang)
+    }
+
+    angleXY(p: Point) {
+        return angleXY(this, p)
+    }
+
 }
 
 // const dist = new Point(100, 100)
 // const p = new Point(100, 100)
 // console.log(dist.inRange(p, 10))
 
-function distXY(p1: Point, p2: Point) {
+export function distXY(p1: Point, p2: Point) {
     return Math.round(Math.sqrt(Math.abs(p1.x - p2.x) ** 2 + Math.abs(p1.y - p2.y) ** 2))
 }
 
@@ -34,30 +41,37 @@ function distXY(p1: Point, p2: Point) {
 // const dist = distXY(new Point(5000, 5000), new Point(7000, 7000))
 // console.log('distXY', dist, dist == 2828)
 
-//
-//
-// // angel to axil X
-// function angleXY(p1, p2) {
-//     let deltaY = Math.abs(p1.y - p2.y)
-//     let deltaX = Math.abs(p1.x - p2.x)
-//     return (180 / Math.PI) * Math.atan2(deltaY, deltaX)
-// }
-//
-// // let ang = angleXY({x: 1, y: 1}, {x: 1, y: 5})
-// // console.log('angleXY', ang, ang === 90)
+
+// midpoint XY
+export function midpointXY(p: Point, p2: Point, mid: number = 2) {
+    return new Point(Math.round(Math.abs(p.x + p2.x) / mid), Math.round(Math.abs(p.y + p2.y) / mid))
+}
+
+// console.log('midpointXY', midpointXY(new Point(0, 0), new Point(0, 10)))
+
+// midpoint XY
+export function pointXYByDistAngle(p: Point, dist: number, ang: number) {
+    // *
+    const x = p.x + Math.round(dist * Math.cos(ang * Math.PI / 180))
+    const y = p.y + Math.round(dist * Math.sin(ang * Math.PI / 180))
+    return new Point(x, y)
+}
+
+// console.log('pointXYByDistAngle', pointXYByDistAngle(new Point(5000, 5000), 1000, -31))
+
+// angel to axil X
+export function angleXY(p1, p2) {
+    let deltaX = p1.x - p2.x
+    let deltaY = p1.y - p2.y
+    return Math.round((180 / Math.PI) * Math.atan2(deltaY, deltaX))
+}
+
+
+// let ang = angleXY({x: 10000, y: 2000}, {x: 5000, y: 5000})
+// console.log('angleXY', ang)
+
 // // ang = angleXY({x: 1, y: 1}, {x: 5, y: 1})
 // // console.log('angleXY', ang, ang === 90)
-//
-//
-// // midpoint XY
-// function midpointXY(x1, y1, x2, y2, mid = 2) {
-//     let Y = Math.round(Math.abs(y1 + y2) / mid)
-//     let X = Math.round(Math.abs(x1 + x2) / mid)
-//     return {x: X, y: Y}
-// }
-//
-// // [ 12438, 10561, 3551, 13591 ] [ 1354, 5990, 5189, 7616 ]
-// // console.log('midpointXY = 5', midpointXY(0, 0, 10, 10, 3))
 //
 // //a,b,c are the sides of the triangle
 // function thirdPointTriangle(a, b, c) {
@@ -186,3 +200,6 @@ function distXY(p1: Point, p2: Point) {
 // // ]
 //
 // // console.log(calcTriangles(p))
+
+
+// (module).exports = {Number, Point, MovePoint}
