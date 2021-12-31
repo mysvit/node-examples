@@ -1,3 +1,34 @@
+//
+// function calcAnglePoint() {
+//     // calc entry point to 90 degree + 500
+//     // if (iNext2 !== undefined) {
+//     //     if (points[iNext2].distanceToNextPoint < tooClose) {
+//     //         const ang1 = points[iPrev].point.angleXY(points[iNext].point)
+//     //         const ang2 = points[iNext].point.angleXY(points[iNext2].point)
+//     //         console.error(ang1 - ang2)
+//     //         if (Math.abs(ang1 - ang2) > 90) {
+//     //             const d = points[iNext2].distanceToNextPoint * predictDist / tooClose
+//     //             const a = ang1 - ang2 > 0 ? (ang1 - ang2) - 90 : (ang1 - ang2) + 90
+//     //             points[iNext].predictPoint = points[iNext].point.pointXYByDistAngle(d, a)
+//     //         }
+//     //     }
+//     // }
+// }
+//
+// function calcBoostAndPredictPoint() {
+//     if (isCalcBoot) {
+//         return
+//     }
+//
+//     const maxD = points.reduce((p, v) => p.distanceToNextPoint < v.distanceToNextPoint
+//         ? v : p)
+//     const index = points.findIndex(f => f.distanceToNextPoint === maxD.distanceToNextPoint)
+//     points[index].isBoost = true
+//     isCalcBoot = true
+// }
+//
+
+
 // interface Point {
 //     x;
 //     y;

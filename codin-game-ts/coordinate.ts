@@ -12,7 +12,7 @@ export class Point {
     }
 
     inRange(p: Point, range: number) {
-        return inRange(this.distXY(p), 0, range)
+        return p && inRange(this.distXY(p), 0, range)
     }
 
     distXY(destination) {
