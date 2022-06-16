@@ -8,7 +8,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "mariadb": "^3.0.0"
+  },
   "devDependencies": {
     "@types/node": "^16.11.12",
     "ts-node": "^10.4.0",

@@ -209,3 +209,28 @@ birthdayCakeCandles = (candles) => {
     return candles.filter(f => f === candles[candles.length - 1]).length
 }
 // console.log(birthdayCakeCandles([3, 2, 1, 3]))
+
+
+mergeArray = () =>{
+    let arr1 = [
+        { id: "abdc4051", date: "2017-01-24", name:'11' },
+        { id: "abdc4052", date: "2017-01-22" }
+    ];
+
+    let arr2 = [
+        { id: "abdc4052", name: "abc" }
+    ];
+
+    let merged = [];
+
+    for(let i=0; i<arr1.length; i++) {
+        merged.push({
+            ...arr1[i],
+            ...(arr2.find((itmInner) => itmInner.id === arr1[i].id))}
+        );
+    }
+
+    console.log(merged);
+}
+
+mergeArray()

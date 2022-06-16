@@ -41,3 +41,13 @@ function sides(literals, ...expressions) {
 // const [x, y] = sides`The area is: ${s1 * s2}.\nThe perimeter is: ${2 * (s1 + s2)}.`;
 // console.log((s1 === x) ? s1 : -1);
 // console.log((s2 === y) ? s2 : -1);
+
+
+
+// this.selectedImage.patchState({selectedMovieId});
+// Object.defineProperty(image, 'type', {
+// 	writable: true,
+// 	value: this.getInsightFileTypes(this.selectedImage.type)
+// });
+// console.debug(image, Object.getOwnPropertyDescriptor(image, 'type'));
+// this.selectedImage.type = ;

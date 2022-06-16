@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            overflow-y: auto;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 80% 20%;
+            margin: 5px;
+            border: 1px solid black;
+        }
+
+        .name {
+
+        }
+
+        .sg {
+            background-color: green;
+        }
+
+        .sy {
+            background-color: yellow;
+        }
+
+        .sr {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<button onclick='do_ping()'>Stop War</button>
+<!--<div>-->
+<!--    <div id="ya.ru">-->
+<!--        <div>Яндекс: ya.ru</div>-->
+<!--        <div></div>-->
+<!--    </div>-->
+<!--</div>-->
+<script>
+    var list = [
+        // {name: 'google', url: 'google.com'},
+        // {name: 'www.speedcheck.org', url: 'www.speedcheck.org'},
+        {name: 'monaco.te.ua', url: 'monaco.te.ua'},
+        {
+            name: 'mon im',
+            url: 'monaco.te.ua/wp-content/uploads/yak-zav-yazati-sharf-snud-65-foto-var-anti-zav-yazuvannya-sharfa-v-s-mki-sharfa-trubi-abo-kruglogo-na-shiyu-krasivo-pravil-no-1.jpg'
+        }
+        // {name: 'localhost1', url: 'localhost1'},
+        // {name: 'localhost', url: 'localhost'},
+        // {name: 'ТМК', url: 'www.tmk-group.ru'},
+        // {name: 'Яндекс', url: 'ya.ru'}
+    ]
+
+    // ping('https://google.com/').then(function (delta) {
+    //     console.log(String(delta))
+    // }).catch(function (err) {
+    //     console.log(err)
+    // })
+
+    for (let i = 0; i < list.length; i++) {
+        let container = document.createElement("div")
+        container.id = 't' + i.toString()
+        container.className = 'container'
+
+        let name = document.createElement("div")
+        name.className = 'name'
+        name.innerHTML = list[i].name + ' - ' + list[i].url
+
+        let status = document.createElement("div")
+        status.id = 's' + i.toString()
+
+        container.appendChild(name)
+        container.appendChild(status)
+        document.body.appendChild(container)
+    }
+
+    for (let i = 0; i < list.length; i++) {
+        do_ping(i, list)
+    }
+
+    function do_ping(i, list) {
+        // ping('http://' + list[i].url + '/').then(function (delta) {
+        ping('http://' + list[i].url).then(function (delta) {
+            if (delta) {
+                setStatus(i, String(delta), 'sg')
+            } else {
+                setStatus(i, String(delta), 'sy')
+            }
+        }).catch(function (err) {
+            setStatus(i, 'down' + err, 'sr')
+        })
+    }
+
+    function setStatus(index, text, className) {
+        const status = document.getElementById('s' + index.toString())
+        if (status) {
+            status.innerHTML = text
+            status.className = className
+        }
+    }
+
+    function request_image(url) {
+        return new Promise(function (resolve, reject) {
+            const img = new Image()
+            img.onload = function () {
+                resolve(img)
+            };
+            img.onerror = function (err) {
+                console.log('err', err)
+                reject(url)
+            };
+            img.src = url
+            // + '?random-no-cache=' + Math.floor((1 + Math.random()) * 0x10000).toString(16);
+        })
+    }
+
+    function ping(url, multiplier) {
+        return new Promise(function (resolve, reject) {
+            const start = (new Date()).getTime()
+            const response = function () {
+                let delta = ((new Date()).getTime() - start)
+                delta *= (multiplier || 1)
+                resolve(delta)
+            };
+            request_image(url).then(response).catch((response) => {
+                console.log('catch', response)
+            })
+
+            // Set a timeout for max-pings, 5s.
+            setTimeout(function () {
+                reject(Error('Timeout'))
+            }, 5000)
+        });
+    }
+
+</script>
+</body>
+</html>
