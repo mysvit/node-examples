@@ -5,7 +5,7 @@ const asyncCatch = (fn) =>
                 .then(data => console.debug(data))
                 .catch((error) => console.debug('==PROM ERROR==', error))
         } catch (error) {
-            console.debug('==ERROR==', error)
+            console.debug('==CATCH ERROR==', error)
         }
     }
 
@@ -15,22 +15,29 @@ const getUsers = asyncCatch(async (req, res) => {
     return Promise.all([1, 2, 3])
 })
 
-getUsers('req1', 'res1').finally(() => console.debug('DONE'))
+// getUsers('req1', 'res1').finally(() => console.debug('DONE'))
 
-//
-// function fnCatch(fn) {
-//     return function (req, res) {
-//         try {
-//             fn(req, res)
-//         } catch (error) {
-//             console.debug('==ERROR==', error)
-//         }
-//     }
-// }
-//
-// const fnGetUsers = fnCatch(function (req, res) {
-//     // const a = undefined
-//     console.debug('func', req, res)
+function fnCatch(fn) {
+    return function (conn) {
+        try {
+            fn(conn)
+        } catch (error) {
+            console.debug('==ERROR fnCatch==', error)
+        }
+    }
+}
+
+// const fnDbUsers = fnCatch(function (conn) {
+//     const a = {}
+//     const b = a.b.c
+//     console.debug('func Conn do something', conn)
 // })
 //
-// fnGetUsers('req1', 'res1')
+// fnDbUsers('conn')
+
+const conn = 'COOONNN'
+fnCatch((conn) => {
+    const a = {}
+    const b = a.b.c
+    console.debug('func Conn do something', conn)
+})

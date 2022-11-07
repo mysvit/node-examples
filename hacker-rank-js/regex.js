@@ -99,3 +99,9 @@ staircase = (n) => {
     console.log('#'.repeat(n))
 }
 // staircase(6)
+
+export function validateConfirmCode(confirm_code) {
+    return (/^[0-9]{5}$/).test(confirm_code)
+}
+
+console.log(validateConfirmCode('12345'))

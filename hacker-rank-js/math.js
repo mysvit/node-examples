@@ -251,3 +251,11 @@ function factorialR(n) {
 }
 
 // console.log('factorialR', factorialR(4), factorialR(4) === 24)
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+// console.log(getRandomInt(10000, 99999))
