@@ -15,6 +15,7 @@ function sumOfHourGlasses(arr) {
 function hourglassesSum(i, j, arr) {
     return arr[i][j] + arr[i][j + 1] + arr[i][j + 2] + arr[i + 1][j + 1] + arr[i + 2][j] + arr[i + 2][j + 1] + arr[i + 2][j + 2]
 }
+
 // const arr = [
 //     [1, 1, 1, 0, 0, 0],
 //     [0, 1, 0, 0, 0, 0],
@@ -39,6 +40,7 @@ function compareTwoArrays(arr1, arr2) {
     }
     return res.concat(arr2)
 }
+
 // const arr1 = [1, 2, 3, 4, 5]
 // const arr2 = [3, 2, 1, 6, 7]
 // const result = compareTwoArrays(arr1, arr2)
@@ -56,6 +58,7 @@ function getSmallestNotExist(A) {
     }
     return srtArr[srtArr.length - 1] + 1
 }
+
 // console.log(getSmallestNotExist([-2, -3, 1, 2, 4, 4, 5]))
 
 // #map #hash
@@ -77,6 +80,7 @@ function hashMapPhoneBook(input) {
         }
     }
 }
+
 // console.log(hashMapPhoneBook(
 //     '3\n' +
 //     'sam 99912222\n' +
@@ -211,26 +215,76 @@ birthdayCakeCandles = (candles) => {
 // console.log(birthdayCakeCandles([3, 2, 1, 3]))
 
 
-mergeArray = () =>{
+mergeArray = () => {
     let arr1 = [
-        { id: "abdc4051", date: "2017-01-24", name:'11' },
-        { id: "abdc4052", date: "2017-01-22" }
+        {id: "abdc4051", date: "2017-01-24", name: '11'},
+        {id: "abdc4052", date: "2017-01-22"}
     ];
 
     let arr2 = [
-        { id: "abdc4052", name: "abc" }
+        {id: "abdc4052", name: "abc"}
     ];
 
     let merged = [];
 
-    for(let i=0; i<arr1.length; i++) {
+    for (let i = 0; i < arr1.length; i++) {
         merged.push({
-            ...arr1[i],
-            ...(arr2.find((itmInner) => itmInner.id === arr1[i].id))}
+                ...arr1[i],
+                ...(arr2.find((itmInner) => itmInner.id === arr1[i].id))
+            }
         );
     }
 
     console.log(merged);
 }
 
-mergeArray()
+// mergeArray()
+
+performArray = () => {
+    const arrLength = 1000000
+    const arr = []
+    const arrKey = {}
+    const arrMap = new Map();
+    for (let i = 0; i < arrLength; i++) {
+        arr.push({i: 'a' + i, v: i})
+        arrKey['a' + i] = i
+        arrMap.set('a' + i, i)
+    }
+    let start = performance.now()
+    let found = arr.find(f => f.i === 'a765000')
+    let end = performance.now()
+    console.log('arr', found, end - start)
+
+    start = performance.now()
+    found = arrKey['a765000']
+    end = performance.now()
+    console.log('arrKey', found, end - start)
+
+    start = performance.now()
+    // found = Object.keys(arrKey).find(key => arrKey[key] === 765000)
+    for (const key in arrKey) {
+        if (arrKey[key] === 765000) {
+            found = arrKey[key]
+            break
+        }
+    }
+    end = performance.now()
+    console.log('arrKeyValue', found, end - start)
+
+    start = performance.now()
+    found = arrMap.get('a765000')
+    end = performance.now()
+    console.log('arrMap', found, end - start)
+
+    start = performance.now()
+    for (const key of arrMap.keys()) {
+        if (arrKey[key] === 765000) {
+            found = arrKey[key]
+            break
+        }
+    }
+    end = performance.now()
+    console.log('arrMapValue', found, end - start)
+}
+
+performArray()
