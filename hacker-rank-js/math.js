@@ -116,7 +116,7 @@ function arrayMinMax(arr) {
     let min = arr[0]
     arr.forEach(v => {
         max = max < v ? v : max
-        min= min > v ? v : min
+        min = min > v ? v : min
     })
     return {min, max}
 }
@@ -259,3 +259,41 @@ function getRandomInt(min, max) {
 }
 
 // console.log(getRandomInt(10000, 99999))
+
+
+// distance with radian
+function getGpsDistanceR(lat1, lon1, lat2, lon2) {
+    const R = 6371e3; // metres
+    const lar1 = lat1 * Math.PI / 180; // a, o in radians
+    const lar2 = lat2 * Math.PI / 180;
+    const larDelta = (lat2 - lat1) * Math.PI / 180;
+    const lorDelta = (lon2 - lon1) * Math.PI / 180;
+
+    const a = Math.sin(larDelta / 2) * Math.sin(larDelta / 2) +
+        Math.cos(lar1) * Math.cos(lar2) *
+        Math.sin(lorDelta / 2) * Math.sin(lorDelta / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    return Math.round(R * c); // in metres
+}
+
+// console.log(getGpsDistanceR(49.54545765, 25.570516417668543, 49.5310839, 25.58198315))
+
+// distance with degree
+function getGpsDistanceD(lat1, lon1, lat2, lon2) {
+    const R = 6371e3; // metres
+    const lar1 = lat1 * Math.PI / 180; // a, o in radians
+    const lar2 = lat2 * Math.PI / 180;
+    const lorDelta = (lon2 - lon1) * Math.PI / 180;
+
+    return Math.round(Math.acos(Math.sin(lar1) * Math.sin(lar2) + Math.cos(lar1) * Math.cos(lar2) * Math.cos(lorDelta)) * R);
+}
+
+console.log(getGpsDistanceD(50, 100, 50, 101))
+
+// const started = new Date().getTime()
+// for (let i = 0; i < 1000000; i++) {
+
+// }
+// const ended = new Date().getTime()
+// console.log('getGpsDistanceD', ended - started)
