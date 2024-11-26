@@ -2,7 +2,8 @@ declare interface Number {
     inRange(begin: number, end: number): boolean;
 }
 
-Number.prototype.inRange = function (begin: number, end: number) {
+Number.prototype.inRange = (begin: number, end: number) => {
+    // @ts-ignore
     return begin <= this && this <= end
 }
 

@@ -1,15 +1,16 @@
+import {General} from './general'
 
 // General.fibonacci()
 //
-// g.caesarCipher()
+// General.caesarCipher()
 //
-// g.shadowCasting()
+// General.shadowCasting()
 //
-// g.foldingANote([['OA', 'LM']], 'LMAO')
-// g.foldingANote([['uDuu', 'u!eu', 'uudu', 'uuuu']], 'Duuuuuuuuuuuude!')
+// General.foldingANote([['OA', 'LM']], 'LMAO')
+// General.foldingANote([['uDuu', 'u!eu', 'uudu', 'uuuu']], 'Duuuuuuuuuuuude!')
 //
-// // three valley
-// const res = g.greenValleys(100, 5,
+// three valley
+// const res = General.greenValleys(100, 5,
 //     [
 //         [120, 134, 172, 141, 154],
 //         [171, 100, 121, 91, 132],

@@ -1,16 +1,16 @@
-class General {
+export class General {
 
     // #loop #string repeat
     public static fibonacci() {
-        const N: number = 7;
-        const ch: string = 'F';
+        const N = 7
+        const ch = 'F'
         let fi = 0
         let n2 = 1
-        let nextTerm = 0;
+        let nextTerm = 0
         for (let i = 0; i < N; i++) {
-            nextTerm = fi + n2;
-            fi = n2;
-            n2 = nextTerm;
+            nextTerm = fi + n2
+            fi = n2
+            n2 = nextTerm
             console.log(ch.repeat(fi))
         }
     }
@@ -303,6 +303,3 @@ class General {
     }
 
 }
-
-
-(module).exports = General

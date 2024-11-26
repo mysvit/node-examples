@@ -6,7 +6,9 @@ class User {
         this._ = parent + this._
     }
 
-    get signup() { return this._ + '/signup' }
+    get signup() {
+        return this._ + '/signup'
+    }
 }
 
 class Api {

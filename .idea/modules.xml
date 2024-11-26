@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file:///projects/klasyfik/.idea/klasyfik.iml" filepath="/projects/klasyfik/.idea/klasyfik.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/node-examples.iml" filepath="$PROJECT_DIR$/.idea/node-examples.iml" />
     </modules>
   </component>
